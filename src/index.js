@@ -1,17 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { GlobalStyle, Home } from './styles/GlobalCss.styled';
+import Sidebar from './components/SideBar';
+import Hero from './components/Hero';
+import About from './components/about/About';
+import HeaderNav from './components/NavBar';
+import Projects from './components/projects/Projects';
+import Footer from './components/contact/Footer';
+import { Boxes, ContainerBoxes } from './styles/Contact.styled';
+
+function HoverBoxes() {
+  const boxes = [];
+  for (let i = 1; i <= 250; i++) {
+    boxes.push(<Boxes key={i}></Boxes>);
+  }
+
+  return <ContainerBoxes>{boxes}</ContainerBoxes>;
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Home>
+    <Sidebar/>
+    <main>
+      <HeaderNav/>
+      <Hero/>
+      <About/>
+      <Projects/>
+      <Footer/>
+      <HoverBoxes/>
+    </main>
+    <GlobalStyle/>
+  </Home>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
